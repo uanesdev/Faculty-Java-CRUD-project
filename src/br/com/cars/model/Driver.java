@@ -27,6 +27,6 @@ public class Driver {
 
     @Override
     public String toString() {
-        return "ModuleDriver [name=" + name + ", cpf=" + cpf + "]";
+        return "Driver -> Name: " + name + ", CPF: " + cpf;
     }
 }

@@ -6,7 +6,7 @@ public class Car {
     private int tankCapacity;
     private Driver driver;
 
-    public Car(String plate, String model, int tankCapacity, Driver driver) {
+    public Car(String plate, String model, int tankCapacity) {
         this.plate = plate;
         this.model = model;
         this.tankCapacity = tankCapacity;
