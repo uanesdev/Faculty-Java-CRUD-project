@@ -7,10 +7,9 @@ import br.com.cars.views.*;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String option = "";
         do {
             Menus.mainMenu();
-            option = scanner.nextLine();
+            String option = scanner.nextLine();
 
             switch (option) {
                 case "1":
@@ -18,7 +17,7 @@ public class Main {
                     break;
 
                 case "2":
-                    System.out.println("In construction!");
+                    CarView.start();
                     break;
 
                 case "0":
