@@ -7,11 +7,9 @@ import java.util.Scanner;
 public class DriverView {
     private static final Scanner scanner = new Scanner(System.in);
     public static void start() {
-        String option = "";
-
         do {
             Menus.driverMenu();
-            option = scanner.nextLine();
+            String option = scanner.nextLine();
 
             switch (option) {
                 case "1":
@@ -28,11 +26,11 @@ public class DriverView {
 
                 case "0":
                     System.out.println("Exiting...");
-                    break;
+                    return;
 
                 default:
                     System.out.println("Invalid option");
             }
-        } while (!option.equals("0"));
+        } while (true);
     }
 }
