@@ -1,15 +1,20 @@
 package br.com.cars.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
     private String plate;
     private String model;
     private int tankCapacity;
     private Driver driver;
+    private ArrayList<Supply> supplys;
 
     public Car(String plate, String model, int tankCapacity) {
         this.plate = plate;
         this.model = model;
         this.tankCapacity = tankCapacity;
+        this.supplys = new ArrayList<>();
     }
 
     public String getPlate() {
@@ -42,6 +47,14 @@ public class Car {
 
     public void setDriver(Driver driver) {
         this.driver = driver;
+    }
+
+    public ArrayList<Supply> getSupplys() {
+        return supplys;
+    }
+
+    public void setSupplys(ArrayList<Supply> supplys) {
+        this.supplys = supplys;
     }
 
     @Override

@@ -20,6 +20,10 @@ public class Main {
                     CarView.start();
                     break;
 
+                case "3":
+                    SupplyView.start();
+                    break;
+
                 case "0":
                     System.out.println("Goodbye!");
                     return;

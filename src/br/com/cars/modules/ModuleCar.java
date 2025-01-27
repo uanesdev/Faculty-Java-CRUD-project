@@ -11,15 +11,18 @@ public class ModuleCar {
 
     public static void linkDriver() {
         Car car = searchCarForPlate();
-
-        System.out.print("Enter driver's CPF: ");
-        String driverCPF = scanner.nextLine();
-        Driver driver = ModuleDriver.searchDriver(driverCPF);
-        if (driver != null) {
-            assert car != null; //OBS
-            car.setDriver(driver);
-            System.out.println("Driver " + driver.getName() + " linked to car: " + car.getPlate());
+        if (car != null) {
+            System.out.print("Enter driver's CPF: ");
+            String driverCPF = scanner.nextLine();
+            Driver driver = ModuleDriver.searchDriver(driverCPF);
+            if (driver != null) {
+                car.setDriver(driver);
+                System.out.println("Driver " + driver.getName() + " linked to car: " + car.getPlate());
+                return;
+            }
         }
+        System.out.println("Car not found!");
+
     }
 
     public static void registerCar() {
@@ -82,6 +85,7 @@ public class ModuleCar {
             Driver driver = car.getDriver();
             if (driver != null && driver.getCpf().equalsIgnoreCase(driverCPF)) {
                 System.out.println(car);
+                return;
             }
         }
         System.out.println("Driver not found!");

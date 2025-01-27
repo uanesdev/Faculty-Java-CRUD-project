@@ -5,6 +5,7 @@ public class Menus {
         System.out.println(" - Main Menu - ");
         System.out.println("1 - Driver Menu");
         System.out.println("2 - Car Menu");
+        System.out.println("3 - Supply Menu");
         System.out.println("0 - Exit");
         System.out.print("Enter your choice: ");
     }
@@ -27,6 +28,13 @@ public class Menus {
         System.out.println("5 - List Cars by CPF");
         System.out.println("0 - Exit Menu");
         System.out.print("Enter your choice: ");
+    }
 
+    public static void supplyMenu() {
+        System.out.println("\n - Supply Menu - ");
+        System.out.println("1 - Register Supply");
+        System.out.println("2 - List Supply");
+        System.out.println("0 - Exit Menu");
+        System.out.print("Enter your choice: ");
     }
 }
