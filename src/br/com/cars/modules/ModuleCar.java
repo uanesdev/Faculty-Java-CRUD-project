@@ -2,55 +2,50 @@ package br.com.cars.modules;
 
 import br.com.cars.model.Car;
 import br.com.cars.model.Driver;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModuleCar {
-    private final ArrayList<Car> cars;
-    private final Scanner scanner = new Scanner(System.in);
-    private final ModuleDriver moduleDriver;
+    private static final ArrayList<Car> cars = new ArrayList<>();
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public ModuleCar(ModuleDriver moduleDriver) {
-        this.cars = new ArrayList<Car>();
-        this.moduleDriver = moduleDriver;
-    }
-
-    public void linkDriver() {
-        Car car = this.searchCarForPlate();
+    public static void linkDriver() {
+        Car car = searchCarForPlate();
 
         System.out.print("Enter driver's CPF: ");
         String driverCPF = scanner.nextLine();
-        Driver driver = this.moduleDriver.searchDriver(driverCPF);
+        Driver driver = ModuleDriver.searchDriver(driverCPF);
         if (driver != null) {
+            assert car != null; //OBS
             car.setDriver(driver);
-            System.out.println("DriverView " + driver.getName() + " linked to car: " + car.getPlate());
+            System.out.println("Driver " + driver.getName() + " linked to car: " + car.getPlate());
         }
     }
 
-    public void registerCar() {
+    public static void registerCar() {
         System.out.print("Enter plate: ");
         String plate = scanner.nextLine();
-        Car car = this.searchCar(plate);
+        Car car = searchCar(plate);
         if (car == null) {
             System.out.print("Enter model: ");
             String model = scanner.nextLine();
             System.out.print("Enter tank capacity: ");
             int capacity = scanner.nextInt();
-            this.addCar(plate, model, capacity);
+            addCar(plate, model, capacity);
             return;
         }
         System.out.println("Car " + car.getPlate() + " is already registered!");
     }
 
-    public void addCar(String plate, String model, int tankCapacity) {
-        this.cars.add(new Car(plate, model, tankCapacity));
+    public static void addCar(String plate, String model, int tankCapacity) {
+        cars.add(new Car(plate, model, tankCapacity));
+        System.out.println("Car " + plate + " added to car list");
     }
 
-    public Car searchCarForPlate() {
+    public static Car searchCarForPlate() {
         System.out.print("Enter plate number: ");
         String plateNumber = scanner.nextLine();
-        Car car = this.searchCar(plateNumber);
+        Car car = searchCar(plateNumber);
         if (car != null) {
             System.out.println(car);
             return car;
@@ -59,8 +54,8 @@ public class ModuleCar {
         return null;
     }
 
-    public Car searchCar(String plate) {
-        for (Car car : this.cars) {
+    public static Car searchCar(String plate) {
+        for (Car car : cars) {
             if (car.getPlate().equalsIgnoreCase(plate)) {
                 return car;
             }
@@ -68,21 +63,27 @@ public class ModuleCar {
         return null;
     }
 
-    public void listCars() {
-        for (Car car : this.cars) {
+    public static void listCars() {
+        if (cars.isEmpty()) {
+            System.out.println("No cars found!");
+            return;
+        }
+
+        for (Car car : cars) {
             System.out.println(car);
         }
     }
 
-    public void listCarsByCPF() {
+    public static void listCarsByCPF() {
         System.out.print("Enter driver's CPF: ");
         String driverCPF = scanner.nextLine();
 
-        for (Car car : this.cars) {
+        for (Car car : cars) {
             Driver driver = car.getDriver();
             if (driver != null && driver.getCpf().equalsIgnoreCase(driverCPF)) {
                 System.out.println(car);
             }
         }
+        System.out.println("Driver not found!");
     }
 }

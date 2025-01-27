@@ -46,6 +46,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return this.plate;
+        return "Car -> Model: " + model + ", Plate: " + plate;
     }
 }
